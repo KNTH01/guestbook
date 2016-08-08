@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Wesh</title>
+    <link rel="stylesheet" href="/assets/semantic/semantic.min.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <div class="ui fiexed inverted menu">
+      <a href="/" class="header item">Home</a>
+    </div>
+    <div class="ui main container">
+      <% if (locals.flash && locals.flash.error) { %>
+        <div class="ui negative message">
+          <%= flash.error %>
+        </div>
+      <% } %>
+      <% if (locals.flash && locals.flash.success) { %>
+        <div class="ui positive message">
+          <%= flash.success %>
+        </div>
+      <% } %>
