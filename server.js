@@ -41,29 +41,16 @@ app.use(session({
 app.use(require('./middlewares/flash'))
 
 // routes
-app.get('/', (req, res) => {
-  // let Message = require('./models/message')
-  // Message.all((messages) => {
-  //   res.render('pages/index', {
-  //     messages
-  //   })
-  // })
-  const User = require('./models/User')
+const Message = require('./models/Message')
 
-  User
-    .query()
-    .then(user => {
-      console.log('suuccess', user, user.length)
-      res.render('pages/index', {
-        messages: []
-      })
+app.get('/', (req, res) => {
+  Message.query()
+  .select('messages.*', 'users.firstName', 'users.lastName')
+  .then(messages => {
+    res.render('pages/index', {
+      messages
     })
-    .catch(err => {
-      console.log(err, 'error')
-      res.render('pages/index', {
-        messages: []
-      })
-    })
+  })
 })
 
 // app.post('/', (req, res) => {
