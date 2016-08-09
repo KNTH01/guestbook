@@ -4,5 +4,6 @@ module.exports = {
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'goldenbook'
+  database: 'goldenbook',
+  charset: 'utf8'
 }
