@@ -5,8 +5,8 @@ exports.up = function (knex, Promise) {
     table.string('password')
     table.string('first_name')
     table.string('last_name')
-    table.dateTime('created_at').defaultTo(knex.raw('now()'))
-    table.dateTime('updated_at').defaultTo(knex.raw('now()'))
+    table.dateTime('created_at')
+    table.dateTime('updated_at')
   })
 }
 
