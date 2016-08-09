@@ -3,10 +3,10 @@ exports.up = function (knex, Promise) {
     table.increments()
     table.string('email').unique()
     table.string('password')
-    table.string('first_name')
-    table.string('last_name')
-    table.dateTime('created_at')
-    table.dateTime('updated_at')
+    table.string('firstName')
+    table.string('lastName')
+    table.dateTime('createdAt')
+    table.dateTime('updatedAt')
   })
 }
 
