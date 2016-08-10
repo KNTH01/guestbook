@@ -45,7 +45,7 @@ const Message = require('./models/Message')
 
 app.get('/', (req, res) => {
   Message.query()
-  .select('messages.*', 'users.firstName', 'users.lastName')
+  .eager('user')
   .then(messages => {
     res.render('pages/index', {
       messages
