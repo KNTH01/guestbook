@@ -2,8 +2,10 @@
 
 const express = require('express')
 const app = express()
+
 const bodyParser = require('body-parser')
 const session = require('express-session')
+
 const objection = require('objection')
 const Model = objection.Model
 const Knex = require('knex')
@@ -41,17 +43,12 @@ app.use(session({
 app.use(require('./middlewares/flash'))
 
 // routes
-const Message = require('./models/Message')
-
-app.get('/', (req, res) => {
-  Message.query()
-  .eager('user')
-  .then(messages => {
-    res.render('pages/index', {
-      messages
-    })
-  })
-})
+const homeRoutes = require('./routes/home')
+const userRoutes = require('./routes/users')
+const messageRoutes = require('./routes/messages')
+app.use('/', homeRoutes)
+app.use('/users', userRoutes)
+app.use('/messages', messageRoutes)
 
 // app.post('/', (req, res) => {
 //   let message = req.body.message
@@ -62,6 +59,8 @@ app.get('/', (req, res) => {
 //     const Message = require('./models/Message')
 //     Message.create(message, () => {
 //       req.flash('success', 'Thanks !')
+//       res.redirect('/')
+//     })')
 //       res.redirect('/')
 //     })
 //   }
