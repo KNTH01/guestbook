@@ -10,11 +10,30 @@ router.get('/', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  // User.query()
-  // .insert({
-  // })
-  // .then()
-  res.send('register')
+  let {
+    email,
+    password,
+    password2,
+    firstName,
+    lastName
+  } = req.body
+
+  if (password === password2) {
+    User.query()
+      .insert({
+        email,
+        password,
+        firstName,
+        lastName
+      })
+      .then(user => {
+        req.flash('success', `User ${user.firstName} successfully registered !`)
+        res.redirect('/')
+      })
+  } else {
+    req.flash('error', 'Passwords do not match !')
+    res.redirect('/')
+  }
 })
 
 module.exports = router

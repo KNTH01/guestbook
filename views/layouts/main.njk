@@ -17,12 +17,12 @@
     </div>
   </div>
   <div class="row">
-    {% if locals.flash and locals.flash.error %}
+    {% if flash.error %}
       <div class="callout alert">
         {{ flash.error }}
       </div>
       {% endif %}
-      {% if locals.flash and locals.flash.success %}
+      {% if flash.success %}
         <div class="callout success">
           {{ flash.success }}
         </div>
