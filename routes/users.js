@@ -9,4 +9,12 @@ router.get('/', (req, res) => {
   res.send('life')
 })
 
+router.post('/register', (req, res) => {
+  // User.query()
+  // .insert({
+  // })
+  // .then()
+  res.send('register')
+})
+
 module.exports = router

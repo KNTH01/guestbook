@@ -1,0 +1,72 @@
+{% extends "../layouts/main.njk" %}
+
+{% block content %}
+
+  <h3>Login</h3>
+  <form class="ui form" action="/login" method="post">
+      <div class="field">
+          <label for="username">username</label>
+          <input type="text" name="username" required>
+      </div>
+      <div class="field">
+          <label for="password">password</label>
+          <input type="password" name="password" required>
+      </div>
+      <button type="submit" class="ui blue labeled submit icon button">
+          <i class="icon user"></i> Login
+      </button>
+  </form>
+
+  <hr>
+
+  <h3>Register</h3>
+  <form class="ui form" action="/register" method="post">
+      <div class="field">
+          <label for="username">username</label>
+          <input type="text" name="username" required>
+      </div>
+      <div class="field">
+          <label for="password">password</label>
+          <input type="password" name="password" required>
+      </div>
+      <div class="field">
+          <label for="password2">password confirm</label>
+          <input type="password" name="password2" required>
+      </div>
+      <button type="submit" class="ui blue labeled submit icon button">
+          <i class="icon user add"></i> Register
+      </button>
+  </form>
+
+  <hr>
+
+  <form class="ui form" action="/" method="post">
+      <div class="field">
+          <label for="message">Message</label>
+          <textarea name="message" id="message"></textarea>
+      </div>
+      <button type="submit" class="ui blue labeled submit icon button">
+          <i class="icon edit"></i> Send
+      </button>
+  </form>
+
+  <div class="ui comments">
+    <h3 class="ui dividing header">Comments</h3>
+    {% for message in messages %}
+    <div class="comment">
+      <a class="avatar" href="/message/<%= message.id %>">
+        <img src="https://yt3.ggpht.com/-aIZ1l8ek27w/AAAAAAAAAAI/AAAAAAAAAAA/fv8ukbvuneI/s88-c-k-no-rj-c0xffffff/photo.jpg" alt="">
+      </a>
+      <div class="content">
+        <div class="metadata">
+          <div class="date">
+            {{ message.createdAt }}
+          </div>
+        </div>
+        <div class="text">{{ message.content }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

@@ -6,6 +6,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const session = require('express-session')
 
+const nunjucks = require('nunjucks')
+
 const objection = require('objection')
 const Model = objection.Model
 const Knex = require('knex')
@@ -20,7 +22,13 @@ const knex = Knex({
 Model.knex(knex)
 
 // template engine
-app.set('view engine', 'ejs')
+app.set('view engine', 'njk')
+
+nunjucks.configure('views', {
+  autoescape: true,
+  watch: true, // should be true in dev mode only
+  express: app
+})
 
 app.use('/assets', express.static('public'))
 
