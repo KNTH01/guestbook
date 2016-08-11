@@ -15,21 +15,23 @@ router.post('/login', (req, res) => {
     password
   } = req.body
 
-  User.query()
-    .where('email', '=', email)
-    .then(user => {
-      if (!user) {
-        req.flash('error', 'Email not found')
-        res.redirect('/')
-      }
-      if (user[0].password === password) {
-        req.flash('success', 'You are loggued in')
-        res.redirect('/')
-      } else {
-        req.flash('error', 'Bad credentials')
-        res.redirect('/')
-      }
+  User.login(email, password)
+    .then((result) => {
+      req.flash('success', result.message)
+      req.session.user = result.user
+      res.redirect('/')
     })
+    .catch(message => {
+      console.error(message)
+      req.flash('error', message)
+      res.redirect('/')
+    })
+})
+
+router.get('/logout', (req, res) => {
+  req.session.user = undefined
+  req.flash('success', 'You have been logged out')
+  res.redirect('/')
 })
 
 router.post('/register', (req, res) => {

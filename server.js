@@ -48,7 +48,9 @@ app.use(session({
   } // no https for now
 }))
 
+// middlewares
 app.use(require('./middlewares/flash'))
+app.use(require('./middlewares/authUser'))
 
 // routes
 const homeRoutes = require('./routes/home')
