@@ -9,6 +9,29 @@ router.get('/', (req, res) => {
   res.send('life')
 })
 
+router.post('/login', (req, res) => {
+  let {
+    email,
+    password
+  } = req.body
+
+  User.query()
+    .where('email', '=', email)
+    .then(user => {
+      if (!user) {
+        req.flash('error', 'Email not found')
+        res.redirect('/')
+      }
+      if (user[0].password === password) {
+        req.flash('success', 'You are loggued in')
+        res.redirect('/')
+      } else {
+        req.flash('error', 'Bad credentials')
+        res.redirect('/')
+      }
+    })
+})
+
 router.post('/register', (req, res) => {
   let {
     email,
