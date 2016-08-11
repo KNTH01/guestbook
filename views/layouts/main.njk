@@ -4,21 +4,26 @@
 <head>
   <meta charset="utf-8">
   <title>Wesh</title>
-  <link rel="stylesheet" href="/assets/semantic/semantic.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/assets/css/foundation.min.css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/assets/css/app.css" media="screen" charset="utf-8">
 </head>
 
 <body>
-  <div class="ui fiexed inverted menu">
-    <a href="/" class="header item">Home</a>
+  <div class="top-bar">
+    <div class="row">
+      <ul class="menu">
+        <li class="menu-text">GoldenBook</li>
+      </ul>
+    </div>
   </div>
-  <div class="ui main container">
+  <div class="row">
     {% if locals.flash and locals.flash.error %}
-      <div class="ui negative message">
+      <div class="callout alert">
         {{ flash.error }}
       </div>
       {% endif %}
       {% if locals.flash and locals.flash.success %}
-        <div class="ui positive message">
+        <div class="callout success">
           {{ flash.success }}
         </div>
       {% endif %}

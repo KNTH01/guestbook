@@ -1,45 +1,57 @@
 {% extends "../layouts/main.njk" %}
 
 {% block content %}
-
-  <h3>Login</h3>
-  <form class="ui form" action="/login" method="post">
-      <div class="field">
-          <label for="username">username</label>
-          <input type="text" name="username" required>
-      </div>
-      <div class="field">
-          <label for="password">password</label>
-          <input type="password" name="password" required>
-      </div>
-      <button type="submit" class="ui blue labeled submit icon button">
-          <i class="icon user"></i> Login
-      </button>
-  </form>
+  <div class="row">
+    <div class="medium-6 columns">
+      <h3>Login</h3>
+      <form action="/users/register" method="post">
+        <div class="row">
+          <div class="medium-12 columns">
+            <label>Email
+              <input type="text" name="email" placeholder="Email">
+            </label>
+            <label>Password
+              <input type="password" name="password" placeholder="blah">
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="medium-6 columns">
+      <h3>Register</h3>
+      <form action="/users/register" method="post">
+        <div class="row">
+          <div class="medium-12 columns">
+            <label>Email
+              <input type="text" name="email" placeholder="Email">
+            </label>
+          </div>
+          <div class="medium-6 columns">
+            <label>Password
+              <input type="password" name="password" placeholder="blah">
+            </label>
+          </div>
+          <div class="medium-6 columns">
+            <label>Password confirm
+              <input type="password" name="password2" placeholder="blah">
+            </label>
+          </div>
+          <div class="medium-12 columns">
+            <label>First name
+              <input type="text" name="firstName" placeholder="John">
+            </label>
+            <label>Last name
+              <input type="text" name="lastName" placeholder="Doe">
+            </label>
+            <button class="button" type="submit">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <hr>
-
-  <h3>Register</h3>
-  <form class="ui form" action="/register" method="post">
-      <div class="field">
-          <label for="username">username</label>
-          <input type="text" name="username" required>
-      </div>
-      <div class="field">
-          <label for="password">password</label>
-          <input type="password" name="password" required>
-      </div>
-      <div class="field">
-          <label for="password2">password confirm</label>
-          <input type="password" name="password2" required>
-      </div>
-      <button type="submit" class="ui blue labeled submit icon button">
-          <i class="icon user add"></i> Register
-      </button>
-  </form>
-
-  <hr>
-
+  <h3>Submit a message</h3>
   <form class="ui form" action="/" method="post">
       <div class="field">
           <label for="message">Message</label>
