@@ -2,33 +2,7 @@
 
 {% block content %}
   {% include "../users/auth.njk" %}
-  <hr>
-  <h3>Submit a message</h3>
-  <form action="/messages/post" method="post">
-      <label for="messageContent">Message</label>
-      <textarea name="content" id="messageContent"></textarea>
-      <button type="submit" class="button">Send</button>
-  </form>
+  {% include "../messages/index.njk" %}
 
-  <div class="Comment">
-    <h4>Comments</h4>
-    <div class="medium-12 columns">
-      {% for message in messages %}
-        <div class="row callout">
-          <div class="medium-1 columns">
-            <a href="/message/<%= message.id %>">
-              <img class="CommentThumbnail thumbnail" src="assets/images/user.png" />
-            </a>
-          </div>
-          <div class="medium-11 columns">
-            <div class="Comment-date">
-                {{ message.createdAt }}
-            </div>
-            <div class="text">{{ message.content }}</div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
 
 {% endblock %}
