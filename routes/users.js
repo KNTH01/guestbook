@@ -50,7 +50,7 @@ router.post('/register', (req, res) => {
 
 router.get('/auth/google',
   passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/plus.login']
+    scope: ['email', 'https://www.googleapis.com/auth/plus.login']
   }))
 
 router.get('/oauth2callback',
