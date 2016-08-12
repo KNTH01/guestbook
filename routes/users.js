@@ -48,4 +48,18 @@ router.post('/register', (req, res) => {
   }
 })
 
+router.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/plus.login']
+  }))
+
+router.get('/oauth2callback',
+  passport.authenticate('google', {
+    failureRedirect: '/'
+  }),
+  function (req, res) {
+    req.flash('success', 'google auth success')
+    res.redirect('/')
+  })
+
 module.exports = router
