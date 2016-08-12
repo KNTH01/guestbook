@@ -2,6 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
+const moment = require('moment')
 
 const Message = require('../models/Message')
 
@@ -15,4 +16,29 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/post', (req, res) => {
+  let { content, createdAt } = req.body
+  let user = req.session.user
+
+  if (!user) {
+    req.flash('error', 'Oh, you attempt to submit a message, but you are not loggued in !')
+    res.redirect('/')
+  }
+
+  Message.query()
+    .insert({
+      content,
+      userId: user.id,
+      createdAt: moment(createdAt).format()
+    })
+    .then(message => {
+      req.flash('success', 'Your message has been registered')
+      res.redirect('/')
+    })
+    .catch(err => {
+      console.error(err)
+      req.flash('error', 'Your message has not been registered')
+      res.redirect('/')
+    })
+})
 module.exports = router

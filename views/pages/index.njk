@@ -4,16 +4,11 @@
   {% include "../users/auth.njk" %}
   <hr>
   <h3>Submit a message</h3>
-  <form class="ui form" action="/" method="post">
-      <div class="field">
-          <label for="message">Message</label>
-          <textarea name="message" id="message"></textarea>
-      </div>
-      <button type="submit" class="ui blue labeled submit icon button">
-          <i class="icon edit"></i> Send
-      </button>
+  <form action="/messages/post" method="post">
+      <label for="messageContent">Message</label>
+      <textarea name="content" id="messageContent"></textarea>
+      <button type="submit" class="button">Send</button>
   </form>
-
 
   <div class="Comment">
     <h4>Comments</h4>
