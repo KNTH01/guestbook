@@ -18,7 +18,10 @@ class User extends Model {
         .then(user => {
           user = user[0]
           if (!user) {
-            reject('Email not found')
+            resolve({
+              user: false,
+              message: 'Email not found'
+            })
           }
           if (user.password === password) {
             resolve({
@@ -26,8 +29,14 @@ class User extends Model {
               message: 'You are loggued in'
             })
           } else {
-            reject('Bad credentials')
+            resolve({
+              user: false,
+              message: 'Bad credentials'
+            })
           }
+        })
+        .catch(err => {
+          reject(err)
         })
     })
   }

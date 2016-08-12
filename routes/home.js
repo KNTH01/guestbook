@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
   Message.query()
     .eager('user')
     .then(messages => {
-      console.log(res.locals)
       res.render('pages/index', {
         messages
       })

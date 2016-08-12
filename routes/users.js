@@ -2,6 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
+const passport = require('passport')
 
 const User = require('../models/User')
 
@@ -9,27 +10,13 @@ router.get('/', (req, res) => {
   res.send('life')
 })
 
-router.post('/login', (req, res) => {
-  let {
-    email,
-    password
-  } = req.body
-
-  User.login(email, password)
-    .then((result) => {
-      req.flash('success', result.message)
-      req.session.user = result.user
-      res.redirect('/')
-    })
-    .catch(message => {
-      console.error(message)
-      req.flash('error', message)
-      res.redirect('/')
-    })
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/'
+}))
 
 router.get('/logout', (req, res) => {
-  req.session.user = undefined
+  req.logout()
   req.flash('success', 'You have been logged out')
   res.redirect('/')
 })

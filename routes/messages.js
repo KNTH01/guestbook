@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 
 router.post('/post', (req, res) => {
   let { content, createdAt } = req.body
-  let user = req.session.user
+  let user = req.user
 
-  if (!user) {
+  if (!user || user === undefined) {
     req.flash('error', 'Oh, you attempt to submit a message, but you are not loggued in !')
     res.redirect('/')
   }
