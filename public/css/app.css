@@ -1,3 +1,11 @@
 .BodyContent {
   margin-top: 50px;
 }
+
+.CommentThumbnail {
+  width: 50px;
+}
+
+.Comment-date {
+  font-size: 0.7rem;
+}

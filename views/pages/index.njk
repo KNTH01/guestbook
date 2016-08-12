@@ -14,22 +14,26 @@
       </button>
   </form>
 
-  <div class="ui comments">
-    <h3 class="ui dividing header">Comments</h3>
-    {% for message in messages %}
-    <div class="comment">
-      <a class="avatar" href="/message/<%= message.id %>">
-        <img src="https://yt3.ggpht.com/-aIZ1l8ek27w/AAAAAAAAAAI/AAAAAAAAAAA/fv8ukbvuneI/s88-c-k-no-rj-c0xffffff/photo.jpg" alt="">
-      </a>
-      <div class="content">
-        <div class="metadata">
-          <div class="date">
-            {{ message.createdAt }}
+
+  <div class="Comment">
+    <h4>Comments</h4>
+    <div class="medium-12 columns">
+      {% for message in messages %}
+        <div class="row callout">
+          <div class="medium-1 columns">
+            <a href="/message/<%= message.id %>">
+              <img class="CommentThumbnail thumbnail" src="assets/images/user.png" />
+            </a>
+          </div>
+          <div class="medium-11 columns">
+            <div class="Comment-date">
+                {{ message.createdAt }}
+            </div>
+            <div class="text">{{ message.content }}</div>
           </div>
         </div>
-        <div class="text">{{ message.content }}</div>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
+
 {% endblock %}
