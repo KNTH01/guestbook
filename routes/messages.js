@@ -25,6 +25,11 @@ router.post('/post', (req, res) => {
     res.redirect('/')
   }
 
+  if (!content || content === '') {
+    req.flash('error', 'Mmmh, your message is empty')
+    res.redirect('/')
+  }
+
   Message.query()
     .insert({
       content,
