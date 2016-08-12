@@ -1,0 +1,17 @@
+{% if user == undefined %}
+  <div class="row">
+    <div class="medium-6 columns">
+      {% include "./login.njk" %}
+    </div>
+    <div class="medium-6 columns">
+      {% include "./register.njk" %}
+    </div>
+  </div>
+{% else %}
+  <div class="callout secondary">
+    <p>
+      Welcome {{ user.firstName }} !
+      <a href="/users/logout">Logout</a>
+    </p>
+  </div>
+{% endif %}

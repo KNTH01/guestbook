@@ -17,18 +17,20 @@
     </div>
   </div>
   <div class="row">
-    {% if flash.error %}
-      <div class="callout alert">
-        {{ flash.error }}
-      </div>
-      {% endif %}
-      {% if flash.success %}
-        <div class="callout success">
-          {{ flash.success }}
+    <div class="BodyContent">
+      {% if flash.error %}
+        <div class="callout alert">
+          {{ flash.error }}
         </div>
-      {% endif %}
-      {% block content %}
-      {% endblock %}
+        {% endif %}
+        {% if flash.success %}
+          <div class="callout success">
+            {{ flash.success }}
+          </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
   </div>
 </body>
 </html>
