@@ -48,17 +48,34 @@ router.post('/register', (req, res) => {
   }
 })
 
+// auth services
+
+// Google
 router.get('/auth/google',
   passport.authenticate('google', {
     scope: ['email', 'https://www.googleapis.com/auth/plus.login']
   }))
 
-router.get('/oauth2callback',
+router.get('/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/'
   }),
   function (req, res) {
     req.flash('success', 'You have been authenticated with Google')
+    res.redirect('/')
+  })
+
+// Github
+router.get('/auth/github',
+  passport.authenticate('github')
+)
+
+router.get('/auth/github/callback',
+  passport.authenticate('github', {
+    failureRedirect: '/'
+  }),
+  function (req, res) {
+    req.flash('success', 'You have been authenticated with Github')
     res.redirect('/')
   })
 
