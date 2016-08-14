@@ -27,6 +27,7 @@ passport.authMiddleware = () => {
 let initPassport = () => {
   require('./local')()
   require('./google')()
+  require('./github')()
 }
 
 module.exports = initPassport
