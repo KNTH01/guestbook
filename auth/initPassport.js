@@ -28,6 +28,7 @@ let initPassport = () => {
   require('./providers/local')()
   require('./providers/google')()
   require('./providers/github')()
+  require('./providers/twitter')()
 }
 
 module.exports = initPassport

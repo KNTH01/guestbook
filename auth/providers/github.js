@@ -5,7 +5,7 @@ module.exports = function () {
   passport.use(new GitHubStrategy(require('../../config/authConfig').github,
     function (accessToken, refreshToken, profile, done) {
       console.log('auth github', accessToken, refreshToken, profile)
-      done('Do not support Github auth yet')
+      done('Github authentication is not supported yet')
       // require('../authUser')(userProfile, done)
     })
   )

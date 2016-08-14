@@ -79,4 +79,16 @@ router.get('/auth/github/callback',
     res.redirect('/')
   })
 
+// Twitter
+router.get('/auth/twitter', passport.authenticate('twitter'))
+
+router.get('/auth/twitter/callback',
+  passport.authenticate('twitter',
+    {
+      successRedirect: '/',
+      failureRedirect: '/'
+    }
+  )
+)
+
 module.exports = router
