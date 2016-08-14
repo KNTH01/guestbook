@@ -58,7 +58,7 @@ router.get('/oauth2callback',
     failureRedirect: '/'
   }),
   function (req, res) {
-    req.flash('success', 'google auth success')
+    req.flash('success', 'You have been authenticated with Google')
     res.redirect('/')
   })
 

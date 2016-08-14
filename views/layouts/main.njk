@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Wesh</title>
+  <title>GoldenBook</title>
   <link rel="stylesheet" href="/assets/css/foundation.min.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="/assets/css/font-awesome.min.css" media="screen" charset="utf-8">
   <link rel="stylesheet" href="/assets/css/app.css" media="screen" charset="utf-8">
@@ -21,12 +21,12 @@
     <div class="medium-12 columns">
       <div class="BodyContent">
         {% if flash.error %}
-          <div class="callout alert">
+          <div class="Flash callout alert">
             {{ flash.error }}
           </div>
           {% endif %}
           {% if flash.success %}
-            <div class="callout success">
+            <div class="Flash callout success">
               {{ flash.success }}
             </div>
           {% endif %}
@@ -35,5 +35,12 @@
       </div>
     </div>
   </div>
+
+  {# jQuery CDN #}
+  <script
+    src="https://code.jquery.com/jquery-3.1.0.min.js"
+    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+    crossorigin="anonymous"></script>
+  <script src="/assets/js/app.js"></script>
 </body>
 </html>
