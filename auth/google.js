@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const User = require('../models/User')
 
 // my personal file with google auth info
-const googleSecret = require('../googlesecret.json').web
+const googleSecret = require('../secret/googlesecret.json').web
 
 module.exports = function () {
   passport.use(new GoogleStrategy({
