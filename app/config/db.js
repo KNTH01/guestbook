@@ -1,6 +1,6 @@
 'use strict'
 
-const dbConf = require('../secret/dbConf')
+const dbConf = require('../../secret/dbConf')
 
 let {
   host,
