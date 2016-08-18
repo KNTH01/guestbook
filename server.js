@@ -1,4 +1,5 @@
 const app = require('./app')
+const logger = require('./app/logger')
 const port = process.env.PORT || 3000
 
 app.listen(port, function (err) {
@@ -6,5 +7,5 @@ app.listen(port, function (err) {
     throw err
   }
 
-  console.log(`server is listening on ${port}...`)
+  logger.info(`Server booted at: http://localhost:${port}`)
 })
