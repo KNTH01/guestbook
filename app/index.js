@@ -3,16 +3,18 @@
 const express = require('express')
 const app = express()
 
+const passport = require('passport')
 const bodyParser = require('body-parser')
 const session = require('express-session')
-
 const nunjucks = require('nunjucks')
-
 const objection = require('objection')
 const Model = objection.Model
 const Knex = require('knex')
 
-const passport = require('passport')
+const logger = require('./logger')
+
+// override express logger
+app.use(require('morgan')('tiny', { stream: logger.stream }))
 
 // Initialize knex connection.
 const knex = Knex({

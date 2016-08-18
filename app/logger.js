@@ -28,5 +28,10 @@ const logger = new (winston.Logger)({
 })
 
 module.exports = logger
+module.exports.stream = {
+  write: (message) => {
+    logger.verbose(message)
+  }
+}
 
 // logging level : { error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }
