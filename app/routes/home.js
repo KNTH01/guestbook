@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const Message = require('../models/Message')
+const logger = require('../logger')
 
 router.get('/', (req, res) => {
   Message.query()
@@ -13,6 +14,7 @@ router.get('/', (req, res) => {
         messages
       })
     })
+    .catch(logger.error)
 })
 
 module.exports = router

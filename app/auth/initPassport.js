@@ -1,6 +1,7 @@
 const passport = require('passport')
 
 const User = require('../models/User')
+const logger = require('../logger')
 
 passport.serializeUser((user, done) => {
   done(null, user.email)
@@ -17,6 +18,7 @@ passport.deserializeUser((email, done) => {
 
 passport.authMiddleware = () => {
   return function (req, res, next) {
+    logger.debug('authMiddleware function, is the request authenticated? => %s', req.isAuthenticated())
     if (req.isAuthenticated()) {
       return next()
     }
@@ -25,6 +27,7 @@ passport.authMiddleware = () => {
 }
 
 let initPassport = () => {
+  logger.debug('Init passport')
   require('./providers/local')()
   require('./providers/google')()
   require('./providers/github')()

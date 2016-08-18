@@ -28,6 +28,8 @@ const logger = new (winston.Logger)({
 })
 
 module.exports = logger
+
+// stream to bind to morgan logger
 module.exports.stream = {
   write: (message) => {
     logger.verbose(message)

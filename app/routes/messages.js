@@ -5,6 +5,7 @@ const router = express.Router()
 const moment = require('moment')
 
 const Message = require('../models/Message')
+const logger = require('../logger')
 
 router.get('/', (req, res) => {
   Message.query()
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
         messages
       })
     })
+    .catch(logger.error)
 })
 
 router.post('/post', (req, res) => {
@@ -41,7 +43,7 @@ router.post('/post', (req, res) => {
       res.redirect('/')
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       req.flash('error', 'Your message has not been registered')
       res.redirect('/')
     })

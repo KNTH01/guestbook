@@ -6,10 +6,6 @@ const passport = require('passport')
 
 const User = require('../models/User')
 
-router.get('/', (req, res) => {
-  res.send('life')
-})
-
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/'

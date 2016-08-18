@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const logger = require('../../logger')
 
 module.exports = function () {
+  logger.debug('Init passport: Google provider')
   passport.use(new GoogleStrategy(require('../../config/authConfig').google,
   function (accessToken, refreshToken, profile, done) {
     logger.verbose('Authentication service: Google', {accessToken, refreshToken, profile})
