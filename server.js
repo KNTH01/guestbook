@@ -13,3 +13,6 @@ app.listen(port, function (err) {
 
   logger.info(`Server booted at: http://localhost:${port}`)
 })
+
+// export app for tests
+module.exports = app
