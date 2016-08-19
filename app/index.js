@@ -19,7 +19,7 @@ app.use(require('morgan')('tiny', { stream: logger.stream }))
 // Initialize knex connection.
 const knex = Knex({
   client: 'mysql',
-  connection: require('./config/db')
+  connection: (require('../config/db'))[process.env.NODE_ENV]
 })
 
 // Give the connection to objection.

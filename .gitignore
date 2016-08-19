@@ -1,4 +1,4 @@
 node_modules
 .idea
-secret
+config_secret
 logs

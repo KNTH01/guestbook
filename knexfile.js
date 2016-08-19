@@ -4,7 +4,12 @@ module.exports = {
 
   development: {
     client: 'mysql',
-    connection: require('./config/db')
+    connection: require('./config/db').development
+  },
+
+  test: {
+    client: 'mysql',
+    connection: require('./config/db').test
   },
 
   staging: {

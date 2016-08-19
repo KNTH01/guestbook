@@ -1,7 +1,7 @@
 // unversioned secret files
-const googleSecret = require('../../secret/authSecret').google
-const githubSecret = require('../../secret/authSecret').github
-const twitterSecret = require('../../secret/authSecret').twitter
+const googleSecret = require('../../config_secret/authenticationProviders').google
+const githubSecret = require('../../config_secret/authenticationProviders').github
+const twitterSecret = require('../../config_secret/authenticationProviders').twitter
 
 module.exports = {
   google: {
