@@ -1,13 +1,13 @@
-const tableName = 'users'
+const tableName = 'passport'
 
 exports.up = function (knex, Promise) {
   return knex.schema.createTable(tableName, function (table) {
     table.increments()
-    table.string('email').unique()
+    table.integer('userId').unsigned().index()
+      .references('id').inTable('users').onDelete('CASCADE')
+    table.string('profileId')
+    table.string('provider')
     table.string('password')
-    table.string('firstName')
-    table.string('lastName')
-    table.string('avatar')
     table.dateTime('createdAt')
     table.dateTime('updatedAt')
   })

@@ -1,6 +1,7 @@
 'use strict'
 
 const Model = require('objection').Model
+const Passport = require('./Passport')
 
 class User extends Model {
   static get tableName () {
@@ -9,6 +10,28 @@ class User extends Model {
 
   get fullName () {
     return `${this.firstName} ${this.lastName}`
+  }
+
+  get password () {
+    console.log(this.passports)
+    if (this.passports !== undefined) {
+      this.passports.forEach(passport => {
+        if (passport.provider === 'local') {
+          return passport.password
+        }
+      })
+    }
+    return null
+  }
+
+  set password (password) {
+    this.passports.forEach(passport => {
+      if (passport.provider === 'local') {
+        passport.password = password
+        return true
+      }
+    })
+    return false
   }
 
   static login (email, password) {
@@ -39,6 +62,20 @@ class User extends Model {
           reject(err)
         })
     })
+  }
+
+  // This object defines the relations to other models.
+  static get relationMappings () {
+    return {
+      passports: {
+        relation: Model.HasManyRelation,
+        modelClass: Passport,
+        join: {
+          from: 'users.id',
+          to: 'passport.userId'
+        }
+      }
+    }
   }
 }
 
