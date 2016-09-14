@@ -7,7 +7,6 @@ exports.up = function (knex, Promise) {
     table.string('password')
     table.string('firstName')
     table.string('lastName')
-    table.string('avatar')
     table.dateTime('createdAt')
     table.dateTime('updatedAt')
   })
