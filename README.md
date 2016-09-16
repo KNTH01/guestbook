@@ -2,6 +2,8 @@
 
 This is a simple guestbook. I started this to make some experimentations
 
+![Guestbook app](https://raw.githubusercontent.com/KevinNTH/guestbook/master/Guestbook.png)
+
 ## The stack
 
 I experiment some tools and come up with this stack. I do like this stack which includes:
