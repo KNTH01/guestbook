@@ -82,15 +82,18 @@ module.exports = {
 ### Run the migrations and seed the database
 
 I use the great knex's migration tools. In order to execute migrations, you have to install knex : `npm install -g knex`
-You need to create your database first,
+
+You need to create your database first
+
 Then run migrations: `knex migrate:latest`
+
 Then run seeds: `knex seed:run`
 
 ### Run the server
 
-Use `npm run start` to start the server.
-Use `npm run dev` to start `nodemon` on the server.
-Use `npm run test` to run `mocha`.
+* use `npm run start` to start the server.
+* use `npm run dev` to start `nodemon` on the server.
+* use `npm run test` to run `mocha`.
 
 ## Features
 
